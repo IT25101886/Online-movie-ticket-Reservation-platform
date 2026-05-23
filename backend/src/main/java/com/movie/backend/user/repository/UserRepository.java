@@ -18,6 +18,22 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     boolean existsByEmail(String email);
 
+    List<User> findByAdminFalseOrderByIdAsc();
+
+    List<User> findByAdminTrueOrderByIdAsc();
+
+    List<User> findByAdminFalseAndUsernameContainingIgnoreCaseOrderByIdAsc(String username);
+
+    List<User> findByAdminTrueAndUsernameContainingIgnoreCaseOrderByIdAsc(String username);
+
+    Optional<User> findByIdAndAdminFalse(Long id);
+
+    Optional<User> findByIdAndAdminTrue(Long id);
+
+    long countByAdminTrue();
+
+    long countByAdminPermission(AdminPermission adminPermission);
+
     @Modifying
     @Transactional
     @Query(value = """
