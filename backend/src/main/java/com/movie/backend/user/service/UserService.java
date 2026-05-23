@@ -72,5 +72,56 @@ public class UserService {
         return user;
     }
 
-    
+    public User getUserById(Long id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
+    }
+
+    public List<User> getAllCustomers() {
+        return userRepository.findByAdminFalseOrderByIdAsc();
+    }
+
+    public List<User> searchCustomersByUsername(String username) {
+        return userRepository.findByAdminFalseAndUsernameContainingIgnoreCaseOrderByIdAsc(username);
+    }
+
+    public User getCustomerById(Long id) {
+        return userRepository.findByIdAndAdminFalse(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
+    }
+
+    public User updateUser(Long id, UpdateUserRequest request) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
+
+        if (request.getFullName() != null && !request.getFullName().isBlank()) {
+            user.setFullName(request.getFullName());
+        }
+        if (request.getEmail() != null && !request.getEmail().isBlank()) {
+            user.setEmail(request.getEmail());
+        }
+        if (request.getPassword() != null && !request.getPassword().isBlank()) {
+            user.setPassword(request.getPassword());
+        }
+        if (request.getPhone() != null && !request.getPhone().isBlank()) {
+            user.setPhone(request.getPhone());
+        }
+        if (request.getProfileImage() != null && !request.getProfileImage().isBlank()) {
+            user.setProfileImage(request.getProfileImage());
+        }
+
+        return userRepository.save(user);
+    }
+
+    public void deleteUser(Long id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
+        userRepository.delete(user);
+    }
+
+    public User changeCustomerActiveStatus(Long id, boolean active) {
+        User user = getCustomerById(id);
+        user.setActive(active);
+        return userRepository.save(user);
+    }
 }
