@@ -1,0 +1,76 @@
+package com.movie.backend.user.service;
+
+import com.movie.backend.user.dto.LoginRequest;
+import com.movie.backend.user.dto.RegisterUserRequest;
+import com.movie.backend.user.dto.UpdateUserRequest;
+import com.movie.backend.user.entity.AdminPermission;
+import com.movie.backend.user.entity.PremiumUser;
+import com.movie.backend.user.entity.RegularUser;
+import com.movie.backend.user.entity.User;
+import com.movie.backend.user.repository.UserRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.util.List;
+
+@Service
+public class UserService {
+
+    private final UserRepository userRepository;
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public User register(RegisterUserRequest request) {
+        if (userRepository.existsByUsername(request.getUsername())) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Username already exists");
+        }
+
+        if (userRepository.existsByEmail(request.getEmail())) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email already exists");
+        }
+
+        String type = request.getUserType() == null ? "REGULAR" : request.getUserType().toUpperCase();
+
+        if ("ADMIN".equals(type)) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Public registration cannot create admins");
+        }
+
+        User user;
+        switch (type) {
+            case "PREMIUM" -> user = new PremiumUser();
+            default -> user = new RegularUser();
+        }
+
+        user.setFullName(request.getFullName());
+        user.setUsername(request.getUsername());
+        user.setEmail(request.getEmail());
+        user.setPassword(request.getPassword());
+        user.setPhone(request.getPhone());
+        user.setAdmin(false);
+        user.setAdminPermission(AdminPermission.NONE);
+        user.setActive(true);
+        user.setProfileImage(null);
+
+        return userRepository.save(user);
+    }
+
+    public User login(LoginRequest request) {
+        User user = userRepository.findByUsername(request.getUsername())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid username"));
+
+        if (!user.getPassword().equals(request.getPassword())) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid password");
+        }
+
+        if (!user.isActive()) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "This account is deactivated");
+        }
+
+        return user;
+    }
+
+    
+}
