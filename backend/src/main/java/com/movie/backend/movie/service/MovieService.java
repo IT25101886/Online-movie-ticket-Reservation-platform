@@ -122,7 +122,18 @@ public class MovieService {
         return movieRepository.save(movie);
     }
 
-    
+    public void deleteMovie(Long performedByAdminId, Long id) {
+        requireMovieManager(performedByAdminId);
+
+        Movie movie = getMovieById(id);
+        movieRepository.delete(movie);
+    }
+
+    public List<Movie> getMoviesSortedByReleaseDate() {
+        List<Movie> movies = new ArrayList<>(movieRepository.findAll());
+        insertionSortByReleaseDate(movies);
+        return movies;
+    }
 
     private void insertionSortByReleaseDate(List<Movie> movies) {
         for (int i = 1; i < movies.size(); i++) {

@@ -68,5 +68,10 @@ public class MovieController {
         return movieService.updateMovie(performedByAdminId, id, request);
     }
 
-    
+    @DeleteMapping("/{id}")
+    public String deleteMovie(@PathVariable Long id,
+                              @RequestParam Long performedByAdminId) {
+        movieService.deleteMovie(performedByAdminId, id);
+        return "Movie deleted successfully";
+    }
 }
