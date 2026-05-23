@@ -99,5 +99,42 @@ public class MovieService {
                 .toList();
     }
 
+    public Movie updateMovie(Long performedByAdminId, Long id, MovieRequest request) {
+        requireMovieManager(performedByAdminId);
+
+        Movie movie = getMovieById(id);
+
+        movie.setTitle(request.getTitle());
+        movie.setGenre(request.getGenre());
+        movie.setDescription(request.getDescription());
+        movie.setReleaseDate(request.getReleaseDate());
+        movie.setShowTimes(request.getShowTimes());
+        movie.setLanguage(request.getLanguage());
+
+        if (request.getPosterImage() != null && !request.getPosterImage().isBlank()) {
+            movie.setPosterImage(request.getPosterImage());
+        }
+
+        if (request.getMoviePhotos() != null) {
+            movie.setPhotoGallery(joinPhotos(request.getMoviePhotos()));
+        }
+
+        return movieRepository.save(movie);
+    }
+
     
+
+    private void insertionSortByReleaseDate(List<Movie> movies) {
+        for (int i = 1; i < movies.size(); i++) {
+            Movie key = movies.get(i);
+            int j = i - 1;
+
+            while (j >= 0 && movies.get(j).getReleaseDate().isAfter(key.getReleaseDate())) {
+                movies.set(j + 1, movies.get(j));
+                j--;
+            }
+
+            movies.set(j + 1, key);
+        }
+    }
 }

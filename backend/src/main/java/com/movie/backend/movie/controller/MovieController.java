@@ -61,5 +61,12 @@ public class MovieController {
         return movieService.getMoviesSortedByReleaseDate();
     }
 
+    @PutMapping("/{id}")
+    public Movie updateMovie(@PathVariable Long id,
+                             @RequestParam Long performedByAdminId,
+                             @RequestBody MovieRequest request) {
+        return movieService.updateMovie(performedByAdminId, id, request);
+    }
+
     
 }
