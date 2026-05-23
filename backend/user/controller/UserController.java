@@ -50,7 +50,15 @@ public class UserController {
         return userService.getCustomerById(id);
     }
 
+    @PutMapping("/customers/{id}/status")
+    public User changeCustomerStatus(@PathVariable Long id, @RequestParam boolean active) {
+        return userService.changeCustomerActiveStatus(id, active);
+    }
 
+    @PutMapping("/{id}")
+    public User updateUser(@PathVariable Long id, @RequestBody UpdateUserRequest request) {
+        return userService.updateUser(id, request);
+    }
 
-   
+    
 }
