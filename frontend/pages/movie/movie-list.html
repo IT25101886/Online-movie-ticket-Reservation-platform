@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movies</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/theme-plus.css" />
+    <link rel="stylesheet" href="../../css/movie-theme.css" />
+</head>
+<body data-root="../..">
+<div id="siteHeader"></div>
+
+<div class="movie-page-shell">
+    <div class="movie-top-strip">
+
+        <p>Browse all movies, filter by genre, and sort by release date</p>
+    </div>
+
+    <div class="movie-toolbar-bar">
+        <div class="movie-toolbar-left">
+            <form id="movieFilterForm" class="movie-toolbar-left">
+                <input type="text" id="movieTitleSearch" placeholder="Search movie title" />
+
+                <select id="movieGenreFilter">
+                    <option value="">All genres</option>
+                    <option value="FANTASY">Fantasy</option>
+                    <option value="COMEDY">Comedy</option>
+                    <option value="ADVENTURE">Adventure</option>
+                    <option value="ANIMATION">Animation</option>
+                    <option value="ACTION">Action</option>
+                    <option value="DRAMA">Drama</option>
+                    <option value="HORROR">Horror</option>
+                </select>
+
+                <button type="submit">Search</button>
+                <button type="button" id="sortReleaseBtn" class="secondary-btn">Sort by Date</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="movieListMessage" class="movie-list-message"></div>
+
+    <section class="movie-section">
+        <h2 class="movie-section-title">Now Showing</h2>
+        <div id="nowShowingGrid" class="movie-grid"></div>
+    </section>
+
+    <section class="movie-section">
+        <h2 class="movie-section-title">Coming soon</h2>
+        <div id="comingSoonGrid" class="movie-grid"></div>
+    </section>
+
+    <div id="moviePagination" class="movie-pagination"></div>
+</div>
+
+<div id="siteFooter"></div>
+
+<script src="../../js/config.js"></script>
+<script src="../../js/layout.js"></script>
+<script src="../../js/movie-list.js"></script>
+</body>
+</html>
