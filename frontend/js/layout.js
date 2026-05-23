@@ -62,7 +62,10 @@ function getAdminSidebarLinks(user) {
       ];
     case "MOVIE_MANAGER":
       return [
-        { label: "Dashboard", href: `${root}/pages/admin/movie-manager-dashboard.html` }
+        { label: "Dashboard", href: `${root}/pages/admin/movie-manager-dashboard.html` },
+        { label: "Add Movie", href: `${root}/pages/admin/add-movie.html` },
+        { label: "Update Movie", href: `${root}/pages/admin/update-movie.html` },
+        { label: "Movie List", href: `${root}/pages/movie/movie-list.html` }
       ];
     case "TICKET_MANAGER":
       return [
@@ -77,9 +80,7 @@ function getAdminSidebarLinks(user) {
         { label: "Dashboard", href: `${root}/pages/admin/review-manager-dashboard.html` }
       ];
     default:
-      return [
-        { label: "Dashboard", href: getDashboardPath(user) }
-      ];
+      return [{ label: "Dashboard", href: getDashboardPath(user) }];
   }
 }
 
@@ -98,6 +99,7 @@ function renderHeader() {
 
   if (!user) {
     navLinks += `
+      <a href="${root}/pages/movie/movie-list.html">Movies</a>
       <a href="${root}/pages/user/register.html">Register</a>
       <a href="${root}/pages/user/login.html">Login</a>
     `;
@@ -108,6 +110,9 @@ function renderHeader() {
     `;
   } else {
     navLinks += `
+      <a href="${root}/pages/movie/movie-list.html">Movies</a>
+      <a href="${root}/pages/booking/booking-history.html">Bookings</a>
+      <a href="${root}/pages/payment/payment-history.html">Payments</a>
       <a href="${root}/pages/user/profile.html">Profile</a>
       <a href="#" id="logoutLink">Logout</a>
     `;
@@ -121,7 +126,7 @@ function renderHeader() {
     <header class="site-header">
       <div class="header-left">
         <div class="brand">
-          <a href="${root}/index.html">Movie Ticket Platform</a>
+          <a href="${root}/index.html">CINEBOOK</a>
         </div>
       </div>
 
@@ -188,21 +193,18 @@ function renderFooter() {
   const footer = document.getElementById("siteFooter");
   if (!footer) return;
 
-  let footerLinks = `<a href="${root}/index.html">Home</a>`;
+  let footerLinks = `<a href="${root}/index.html">Home</a><a href="${root}/pages/movie/movie-list.html">Movies</a>`;
 
   if (!user) {
+    footerLinks += `<a href="${root}/pages/user/login.html">Login</a>`;
+  } else if (!user.admin) {
     footerLinks += `
-      <a href="${root}/pages/user/register.html">Register</a>
-      <a href="${root}/pages/user/login.html">Login</a>
-    `;
-  } else if (user.admin) {
-    footerLinks += `
-      <a href="${getDashboardPath(user)}">Dashboard</a>
-    `;
-  } else {
-    footerLinks += `
+      <a href="${root}/pages/booking/booking-history.html">Bookings</a>
+      <a href="${root}/pages/payment/payment-history.html">Payments</a>
       <a href="${root}/pages/user/profile.html">Profile</a>
     `;
+  } else {
+    footerLinks += `<a href="${getDashboardPath(user)}">Dashboard</a>`;
   }
 
   footer.innerHTML = `
@@ -210,8 +212,8 @@ function renderFooter() {
       <div class="footer-shell">
         <div class="footer-top">
           <div class="footer-brand">
-            <h3>Movie Ticket Platform</h3>
-            <p>Red and black cinema styled booking and management system.</p>
+            <h3>CineBook</h3>
+            <p>Movie booking, seat selection, payment processing, and history tracking.</p>
           </div>
 
           <div class="footer-nav">

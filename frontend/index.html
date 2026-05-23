@@ -3,110 +3,85 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Movie Ticket Platform</title>
+    <title>CineBook Home</title>
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/theme-plus.css" />
+    <link rel="stylesheet" href="css/home-theme.css" />
 </head>
 <body data-root=".">
 <div id="siteHeader"></div>
 
-<div class="container">
-    <section class="home-hero">
-        <div class="home-hero-content">
-            <div class="hero-year">Now Showing</div>
-            <h1>Experience Movies in a New Way</h1>
-            <p>
-                Browse movies, manage users and admins, and build your full online movie
-                ticket reservation platform with a modern red and black cinema theme.
-            </p>
+<main class="home-shell">
+    <!-- Hero Slider -->
+    <section class="hero-slider" id="heroSlider">
+        <div id="heroSlidesContainer"></div>
 
-            <div class="hero-actions">
-                <a class="btn" href="pages/user/login.html">Log In</a>
-                <a class="secondary-btn" href="pages/user/register.html">Create Account</a>
+        <div class="hero-controls">
+            <div id="heroDots" class="hero-dots"></div>
+
+            <div class="hero-arrow-wrap">
+                <button id="heroPrevBtn" class="hero-arrow" type="button">‹</button>
+                <button id="heroNextBtn" class="hero-arrow" type="button">›</button>
             </div>
-        </div>
-
-        <div class="hero-poster">
-            Featured Cinema Experience
         </div>
     </section>
 
-    <h2 class="home-section-title">Quick Access</h2>
-    <div class="dashboard-grid" style="margin-bottom: 28px;">
-        <div class="dashboard-card">
-            <h3>User Module</h3>
-            <p>Register, login, update profile, upload profile image, and manage account details.</p>
-            <div class="button-group">
-                <a class="btn" href="pages/user/register.html">Register</a>
-                <a class="btn" href="pages/user/login.html">Login</a>
-                <a class="secondary-btn" href="pages/user/profile.html">Profile</a>
+    <!-- Attractive Feature Strip -->
+    <section class="home-feature-strip">
+        <div class="home-feature-card">
+            <div class="home-feature-label">Now Streaming Feel</div>
+            <div class="home-feature-title">Book Fast, Watch Easy</div>
+            <div class="home-feature-text">
+                Browse movies, check showtimes, and reserve your seats in a modern cinema-style platform.
             </div>
         </div>
 
-        <div class="dashboard-card">
-            <h3>Admin Module</h3>
-            <p>Manage admins, permissions, reports, and role-based dashboard navigation.</p>
-            <div class="button-group">
-                <a class="btn" href="pages/admin/admin-manager-dashboard.html">Dashboard</a>
-                <a class="secondary-btn" href="pages/admin/admin-list.html">Admin List</a>
-            </div>
-        </div>
-    </div>
-
-    <h2 class="home-section-title">Featured Movies</h2>
-    <div class="movie-grid">
-        <div class="movie-card">
-            <div class="poster-thumb">INTERSTELLAR</div>
-            <div class="poster-info">
-                <h4>Interstellar</h4>
-                <p>Sci-fi adventure • 2h 49m</p>
-                <div class="button-group">
-                    <button type="button">Buy Ticket</button>
-                    <button type="button" class="secondary-btn">Trailer</button>
-                </div>
+        <div class="home-feature-card">
+            <div class="home-feature-label">Smart Experience</div>
+            <div class="home-feature-title">Live Posters From Database</div>
+            <div class="home-feature-text">
+                All posters and movie images are loaded directly from your database so your home page updates automatically.
             </div>
         </div>
 
-        <div class="movie-card">
-            <div class="poster-thumb">BATMAN</div>
-            <div class="poster-info">
-                <h4>The Batman</h4>
-                <p>Action thriller • 2h 56m</p>
-                <div class="button-group">
-                    <button type="button">Buy Ticket</button>
-                    <button type="button" class="secondary-btn">Trailer</button>
-                </div>
+        <div class="home-feature-card">
+            <div class="home-feature-label">User Friendly</div>
+            <div class="home-feature-title">Details, Reviews, Booking</div>
+            <div class="home-feature-text">
+                Users can view details, submit reviews, select seats, and complete payments in one smooth flow.
+            </div>
+        </div>
+    </section>
+
+    <!-- Now Showing -->
+    <section class="home-section">
+        <div class="home-section-head">
+            <div>
+                <div class="home-section-title">Now Showing</div>
+                <div class="home-section-sub">Movies currently available for booking</div>
             </div>
         </div>
 
-        <div class="movie-card">
-            <div class="poster-thumb">DUNE</div>
-            <div class="poster-info">
-                <h4>Dune</h4>
-                <p>Adventure sci-fi • 2h 35m</p>
-                <div class="button-group">
-                    <button type="button">Buy Ticket</button>
-                    <button type="button" class="secondary-btn">Trailer</button>
-                </div>
+        <div id="homeNowShowingGrid" class="home-movie-grid"></div>
+    </section>
+
+    <!-- Coming Soon -->
+    <section class="home-section">
+        <div class="home-section-head">
+            <div>
+                <div class="home-section-title">Coming Soon</div>
+                <div class="home-section-sub">Upcoming movies from the database</div>
             </div>
         </div>
 
-        <div class="movie-card">
-            <div class="poster-thumb">AVATAR</div>
-            <div class="poster-info">
-                <h4>Avatar 2</h4>
-                <p>Fantasy adventure • 3h 12m</p>
-                <div class="button-group">
-                    <button type="button">Buy Ticket</button>
-                    <button type="button" class="secondary-btn">Trailer</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+        <div id="homeComingSoonGrid" class="home-movie-grid"></div>
+    </section>
+</main>
 
 <div id="siteFooter"></div>
 
 <script src="js/config.js"></script>
 <script src="js/layout.js"></script>
+<script src="js/home.js"></script>
 </body>
 </html>
