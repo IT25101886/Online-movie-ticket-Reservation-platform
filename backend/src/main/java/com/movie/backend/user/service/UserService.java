@@ -113,5 +113,15 @@ public class UserService {
         return userRepository.save(user);
     }
 
-   
+    public void deleteUser(Long id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
+        userRepository.delete(user);
+    }
+
+    public User changeCustomerActiveStatus(Long id, boolean active) {
+        User user = getCustomerById(id);
+        user.setActive(active);
+        return userRepository.save(user);
+    }
 }
