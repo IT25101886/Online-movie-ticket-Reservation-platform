@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CineBook Home</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/theme-plus.css" />
+    <link rel="stylesheet" href="css/home-theme.css" />
+</head>
+<body data-root=".">
+<div id="siteHeader"></div>
+
+<main class="home-shell">
+    <!-- Hero Slider -->
+    <section class="hero-slider" id="heroSlider">
+        <div id="heroSlidesContainer"></div>
+
+        <div class="hero-controls">
+            <div id="heroDots" class="hero-dots"></div>
+
+            <div class="hero-arrow-wrap">
+                <button id="heroPrevBtn" class="hero-arrow" type="button">‹</button>
+                <button id="heroNextBtn" class="hero-arrow" type="button">›</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Attractive Feature Strip -->
+    <section class="home-feature-strip">
+        <div class="home-feature-card">
+            <div class="home-feature-label">Now Streaming Feel</div>
+            <div class="home-feature-title">Book Fast, Watch Easy</div>
+            <div class="home-feature-text">
+                Browse movies, check showtimes, and reserve your seats in a modern cinema-style platform.
+            </div>
+        </div>
+
+        <div class="home-feature-card">
+            <div class="home-feature-label">Smart Experience</div>
+            <div class="home-feature-title">Live Posters From Database</div>
+            <div class="home-feature-text">
+                All posters and movie images are loaded directly from your database so your home page updates automatically.
+            </div>
+        </div>
+
+        <div class="home-feature-card">
+            <div class="home-feature-label">User Friendly</div>
+            <div class="home-feature-title">Details, Reviews, Booking</div>
+            <div class="home-feature-text">
+                Users can view details, submit reviews, select seats, and complete payments in one smooth flow.
+            </div>
+        </div>
+    </section>
+
+    <!-- Now Showing -->
+    <section class="home-section">
+        <div class="home-section-head">
+            <div>
+                <div class="home-section-title">Now Showing</div>
+                <div class="home-section-sub">Movies currently available for booking</div>
+            </div>
+        </div>
+
+        <div id="homeNowShowingGrid" class="home-movie-grid"></div>
+    </section>
+
+    <!-- Coming Soon -->
+    <section class="home-section">
+        <div class="home-section-head">
+            <div>
+                <div class="home-section-title">Coming Soon</div>
+                <div class="home-section-sub">Upcoming movies from the database</div>
+            </div>
+        </div>
+
+        <div id="homeComingSoonGrid" class="home-movie-grid"></div>
+    </section>
+</main>
+
+<div id="siteFooter"></div>
+
+<script src="js/config.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+package com.movie.backend.movie.service;
+
+import com.movie.backend.movie.dto.MovieRequest;
+import com.movie.backend.movie.entity.Movie;
+import com.movie.backend.movie.entity.NowShowingMovie;
+import com.movie.backend.movie.entity.UpcomingMovie;
+import com.movie.backend.movie.repository.MovieRepository;
+import com.movie.backend.user.entity.AdminPermission;
+import com.movie.backend.user.entity.User;
+import com.movie.backend.user.repository.UserRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
+public class MovieService {
+
+    private final MovieRepository movieRepository;
+    private final UserRepository userRepository;
+
+    public MovieService(MovieRepository movieRepository, UserRepository userRepository) {
+        this.movieRepository = movieRepository;
+        this.userRepository = userRepository;
+    }
+
+    private void requireMovieManager(Long performedByAdminId) {
+        User actor = userRepository.findById(performedByAdminId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Admin not found"));
+
+        boolean allowed = actor.isAdmin() && (
+                actor.getAdminPermission() == AdminPermission.MOVIE_MANAGER ||
+                        actor.getAdminPermission() == AdminPermission.ADMIN_MANAGER
+        );
+
+        if (!allowed) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Only MOVIE_MANAGER or ADMIN_MANAGER can do this");
+        }
+    }
+
+    private String joinPhotos(List<String> photos) {
+        if (photos == null || photos.isEmpty()) return "";
+        return String.join("||", photos);
+    }
+
+    public Movie addMovie(Long performedByAdminId, MovieRequest request) {
+        requireMovieManager(performedByAdminId);
+
+        Movie movie;
+        String type = request.getMovieType() == null ? "NOW_SHOWING" : request.getMovieType().toUpperCase();
+
+        switch (type) {
+            case "UPCOMING" -> movie = new UpcomingMovie();
+            default -> movie = new NowShowingMovie();
+        }
+
+        movie.setTitle(request.getTitle());
+        movie.setGenre(request.getGenre());
+        movie.setDescription(request.getDescription());
+        movie.setReleaseDate(request.getReleaseDate());
+        movie.setShowTimes(request.getShowTimes());
+        movie.setLanguage(request.getLanguage());
+        movie.setPosterImage(request.getPosterImage());
+        movie.setPhotoGallery(joinPhotos(request.getMoviePhotos()));
+
+        return movieRepository.save(movie);
+    }
+
+   
+}
