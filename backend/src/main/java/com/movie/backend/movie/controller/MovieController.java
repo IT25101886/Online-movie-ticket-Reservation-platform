@@ -26,5 +26,40 @@ public class MovieController {
         return movieService.addMovie(performedByAdminId, request);
     }
 
+    @GetMapping
+    public List<Movie> getAllMovies() {
+        return movieService.getAllMovies();
+    }
+
+    @GetMapping("/now-showing")
+    public List<Movie> getNowShowingMovies() {
+        return movieService.getNowShowingMovies();
+    }
+
+    @GetMapping("/upcoming")
+    public List<Movie> getUpcomingMovies() {
+        return movieService.getUpcomingMovies();
+    }
+
+    @GetMapping("/{id}")
+    public Movie getMovieById(@PathVariable Long id) {
+        return movieService.getMovieById(id);
+    }
+
+    @GetMapping("/search")
+    public List<Movie> searchMovies(
+            @RequestParam(required = false) String title,
+            @RequestParam(required = false) String genre,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate releaseDate,
+            @RequestParam(required = false) String category
+    ) {
+        return movieService.searchMovies(title, genre, releaseDate, category);
+    }
+
+    @GetMapping("/sorted/release-date")
+    public List<Movie> getMoviesSortedByReleaseDate() {
+        return movieService.getMoviesSortedByReleaseDate();
+    }
+
     
 }

@@ -69,5 +69,35 @@ public class MovieService {
         return movieRepository.save(movie);
     }
 
-   
+    public List<Movie> getAllMovies() {
+        return movieRepository.findAll();
+    }
+
+    public Movie getMovieById(Long id) {
+        return movieRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Movie not found"));
+    }
+
+    public List<Movie> getNowShowingMovies() {
+        return movieRepository.findAll().stream()
+                .filter(movie -> "NOW_SHOWING".equalsIgnoreCase(movie.getCategory()))
+                .toList();
+    }
+
+    public List<Movie> getUpcomingMovies() {
+        return movieRepository.findAll().stream()
+                .filter(movie -> "UPCOMING".equalsIgnoreCase(movie.getCategory()))
+                .toList();
+    }
+
+    public List<Movie> searchMovies(String title, String genre, LocalDate releaseDate, String category) {
+        return movieRepository.findAll().stream()
+                .filter(movie -> title == null || title.isBlank() || movie.getTitle().toLowerCase().contains(title.toLowerCase()))
+                .filter(movie -> genre == null || genre.isBlank() || movie.getGenre().equalsIgnoreCase(genre))
+                .filter(movie -> releaseDate == null || movie.getReleaseDate().equals(releaseDate))
+                .filter(movie -> category == null || category.isBlank() || movie.getCategory().equalsIgnoreCase(category))
+                .toList();
+    }
+
+    
 }
