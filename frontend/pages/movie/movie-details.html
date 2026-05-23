@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Details</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/theme-plus.css" />
+    <link rel="stylesheet" href="../../css/movie-theme.css" />
+    <link rel="stylesheet" href="../../css/review-theme.css" />
+</head>
+<body data-root="../..">
+<div id="siteHeader"></div>
+
+<div class="container">
+    <section class="movie-hero">
+        <div class="movie-hero-left">
+            <img id="detailPoster" class="movie-poster-large" src="" alt="Movie Poster" />
+
+            <div class="movie-hero-content">
+                <div class="hero-year" id="detailCategory">NOW SHOWING</div>
+                <h1 id="detailTitle">Movie Title</h1>
+                <p id="detailDescription">Description</p>
+
+                <div class="movie-meta-line">
+                    <span id="detailGenre" class="movie-chip"></span>
+                    <span id="detailLanguage" class="movie-chip"></span>
+                    <span id="detailReleaseDate" class="movie-chip"></span>
+                    <span id="detailShowTimes" class="movie-chip"></span>
+                </div>
+
+                <div class="hero-actions">
+                    <button id="bookTicketsBtn" type="button">Buy Ticket</button>
+                    <a class="secondary-btn" href="movie-list.html">Back to Movies</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="management-card">
+        <h2>Photos & Screenshots</h2>
+        <div id="movieGallery" class="gallery-grid"></div>
+    </div>
+
+    <div class="management-card">
+        <h2>Details</h2>
+        <div class="details-table">
+            <div class="detail-row">
+                <div class="detail-label">Movie Name</div>
+                <div class="detail-value" id="detailsName"></div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Genre</div>
+                <div class="detail-value" id="detailsGenre"></div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Language</div>
+                <div class="detail-value" id="detailsLanguage"></div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Release Date</div>
+                <div class="detail-value" id="detailsReleaseDate"></div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Show Times</div>
+                <div class="detail-value" id="detailsShowTimes"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reviews Section -->
+    <section class="review-section">
+        <div class="review-summary-grid">
+            <div class="review-card review-overall-box">
+                <div class="review-form-title">Audience Rating</div>
+                <div id="overallRatingValue" class="review-overall-value">0.0</div>
+                <div id="overallRatingStars" class="review-overall-stars">☆☆☆☆☆</div>
+                <div id="overallRatingText" class="review-overall-text">0 reviews</div>
+
+                <div class="review-meta-row">
+                    <span id="verifiedReviewCount" class="review-badge-pill">Verified: 0</span>
+                    <span id="publicReviewCount" class="review-badge-pill">Public: 0</span>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-form-title">Rating Breakdown</div>
+
+                <div class="review-breakdown-row">
+                    <span>5 ★</span>
+                    <div class="review-bar"><div id="bar5" class="review-bar-fill" style="width:0%"></div></div>
+                    <span id="count5">0</span>
+                </div>
+
+                <div class="review-breakdown-row">
+                    <span>4 ★</span>
+                    <div class="review-bar"><div id="bar4" class="review-bar-fill" style="width:0%"></div></div>
+                    <span id="count4">0</span>
+                </div>
+
+                <div class="review-breakdown-row">
+                    <span>3 ★</span>
+                    <div class="review-bar"><div id="bar3" class="review-bar-fill" style="width:0%"></div></div>
+                    <span id="count3">0</span>
+                </div>
+
+                <div class="review-breakdown-row">
+                    <span>2 ★</span>
+                    <div class="review-bar"><div id="bar2" class="review-bar-fill" style="width:0%"></div></div>
+                    <span id="count2">0</span>
+                </div>
+
+                <div class="review-breakdown-row">
+                    <span>1 ★</span>
+                    <div class="review-bar"><div id="bar1" class="review-bar-fill" style="width:0%"></div></div>
+                    <span id="count1">0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="review-layout">
+            <div class="review-card">
+                <div id="reviewFormTitle" class="review-form-title">Write a Review</div>
+
+                <div id="reviewLoginHint" class="review-empty" style="display:none;">
+                    Login as a normal user to add a review.
+                </div>
+
+                <form id="reviewForm">
+                    <input type="hidden" id="reviewId" />
+                    <input type="hidden" id="reviewRating" value="0" />
+
+                    <label>Your Rating</label>
+                    <div id="ratingPicker" class="rating-picker">
+                        <button type="button" class="rating-star-btn" data-value="1">★</button>
+                        <button type="button" class="rating-star-btn" data-value="2">★</button>
+                        <button type="button" class="rating-star-btn" data-value="3">★</button>
+                        <button type="button" class="rating-star-btn" data-value="4">★</button>
+                        <button type="button" class="rating-star-btn" data-value="5">★</button>
+                        <span id="ratingHelper" class="rating-helper">Select 1 to 5 stars</span>
+                    </div>
+
+                    <label for="reviewComment">Comment</label>
+                    <textarea id="reviewComment" rows="6" placeholder="Share your thoughts about this movie..."></textarea>
+
+                    <div class="review-form-actions">
+                        <button id="submitReviewBtn" type="submit">Submit Review</button>
+                        <button id="cancelEditReviewBtn" class="secondary-btn" type="button" style="display:none;">Cancel Edit</button>
+                        <button id="deleteOwnReviewBtn" class="danger-btn" type="button" style="display:none;">Delete My Review</button>
+                    </div>
+                </form>
+
+                <div id="reviewFormMessage" class="review-form-message"></div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-list-title">Audience Reviews</div>
+                <div id="reviewListMessage" class="review-list-message"></div>
+                <div id="reviewListWrap" class="review-list-wrap"></div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div id="siteFooter"></div>
+
+<script src="../../js/config.js"></script>
+<script src="../../js/layout.js"></script>
+<script src="../../js/movie-details.js"></script>
+</body>
+</html>
