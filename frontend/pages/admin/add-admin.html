@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Admin</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<body data-root="../..">
+<div id="siteHeader"></div>
+
+<div class="app-shell">
+    <div id="siteSidebar"></div>
+
+    <main class="page-main">
+        <div class="container">
+            <div class="card">
+                <h2>Add New Admin</h2>
+
+                <form id="addAdminForm">
+                    <input type="text" id="fullName" placeholder="Full Name" required />
+                    <input type="text" id="username" placeholder="Username" required />
+                    <input type="email" id="email" placeholder="Email" required />
+                    <input type="password" id="password" placeholder="Password" required />
+                    <input type="text" id="phone" placeholder="Phone Number" required />
+
+                    <select id="adminPermission" required>
+                        <option value="USER_MANAGER">User Manager</option>
+                        <option value="MOVIE_MANAGER">Movie Manager</option>
+                        <option value="TICKET_MANAGER">Ticket Manager</option>
+                        <option value="PAYMENT_MANAGER">Payment Manager</option>
+                        <option value="REVIEW_MANAGER">Review Manager</option>
+                        <option value="ADMIN_MANAGER">Admin Manager</option>
+                    </select>
+
+                    <button type="submit">Create Admin</button>
+                </form>
+
+                <div id="message"></div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<div id="siteFooter"></div>
+
+<script src="../../js/config.js"></script>
+<script src="../../js/layout.js"></script>
+<script src="../../js/add-admin.js"></script>
+</body>
+</html>

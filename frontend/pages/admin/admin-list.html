@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin List</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<body data-root="../..">
+<div id="siteHeader"></div>
+
+<div class="app-shell">
+    <div id="siteSidebar"></div>
+
+    <main class="page-main">
+        <div class="container">
+            <div class="card">
+                <h2>Admins Only</h2>
+
+                <form id="searchAdminForm">
+                    <input type="text" id="searchAdminUsername" placeholder="Search admin by username" />
+                    <button type="submit">Search</button>
+                </form>
+
+                <div class="actions" style="margin-top: 15px;">
+                    <button id="loadAdminsBtn" class="small-btn" type="button">Load All Admins</button>
+                </div>
+
+                <div id="message"></div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Full Name</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody id="adminTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<div id="siteFooter"></div>
+
+<script src="../../js/config.js"></script>
+<script src="../../js/layout.js"></script>
+<script src="../../js/admin-list.js"></script>
+</body>
+</html>

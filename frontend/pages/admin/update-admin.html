@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update Admin</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<body data-root="../..">
+<div id="siteHeader"></div>
+
+<div class="app-shell">
+    <div id="siteSidebar"></div>
+
+    <main class="page-main">
+        <div class="container">
+            <div class="card">
+                <h2>Update Admin</h2>
+
+                <form id="loadAdminForm">
+                    <input type="number" id="adminIdInput" placeholder="Enter Admin ID or use selected admin" />
+                    <button type="submit">Load Admin</button>
+                </form>
+
+                <form id="updateAdminForm" style="margin-top: 20px;">
+                    <input type="text" id="adminId" placeholder="Admin ID" readonly />
+                    <input type="text" id="fullName" placeholder="Full Name" />
+                    <input type="text" id="username" placeholder="Username" />
+                    <input type="email" id="email" placeholder="Email" />
+                    <input type="password" id="password" placeholder="Password" />
+                    <input type="text" id="phone" placeholder="Phone Number" />
+
+                    <select id="adminPermission">
+                        <option value="USER_MANAGER">User Manager</option>
+                        <option value="MOVIE_MANAGER">Movie Manager</option>
+                        <option value="TICKET_MANAGER">Ticket Manager</option>
+                        <option value="PAYMENT_MANAGER">Payment Manager</option>
+                        <option value="REVIEW_MANAGER">Review Manager</option>
+                        <option value="ADMIN_MANAGER">Admin Manager</option>
+                    </select>
+
+                    <button type="submit">Update Admin</button>
+                </form>
+
+                <div id="message"></div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<div id="siteFooter"></div>
+
+<script src="../../js/config.js"></script>
+<script src="../../js/layout.js"></script>
+<script src="../../js/update-admin.js"></script>
+</body>
+</html>
