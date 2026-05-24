@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/theme-plus.css" />
+</head>
+<body data-root="../..">
+<div id="siteHeader"></div>
+
+<div class="container">
+    <div class="management-card">
+        <div class="profile-top-row">
+            <div class="profile-top-left">
+                <img id="profileMainImage" class="user-detail-avatar large" src="" alt="Profile" />
+                <div>
+                    <h2 id="profileName">User Name</h2>
+                    <p id="profileUsername" class="muted-text">@username</p>
+                    <div id="profileRoleBadge" class="role-pill">REGULAR USER</div>
+                </div>
+            </div>
+
+            <div class="profile-top-actions">
+                <button id="openEditModalBtn" class="btn" type="button">Edit Profile</button>
+                <button id="deleteBtn" class="danger-btn" type="button">Delete Account</button>
+            </div>
+        </div>
+
+        <div class="details-table">
+            <div class="detail-row">
+                <div class="detail-label">User ID</div>
+                <div class="detail-value" id="viewUserId"></div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Full Name</div>
+                <div class="detail-value" id="viewFullName"></div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Username</div>
+                <div class="detail-value" id="viewUsername"></div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Email</div>
+                <div class="detail-value" id="viewEmail"></div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Phone</div>
+                <div class="detail-value" id="viewPhone"></div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Role</div>
+                <div class="detail-value" id="viewRole"></div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Account Status</div>
+                <div class="detail-value" id="viewStatus"></div>
+            </div>
+        </div>
+
+        <div id="message"></div>
+    </div>
+</div>
+
+<!-- Edit Modal -->
+<div id="editProfileModal" class="custom-modal hidden">
+    <div class="custom-modal-overlay" id="closeModalOverlay"></div>
+
+    <div class="custom-modal-content">
+        <div class="custom-modal-header">
+            <h2>Edit Profile</h2>
+            <button id="closeModalBtn" class="icon-close-btn" type="button">×</button>
+        </div>
+
+        <div class="custom-modal-body">
+            <div class="profile-modal-top">
+                <img id="profilePreview" class="user-detail-avatar large" src="" alt="Preview" />
+
+                <div class="profile-modal-info">
+                    <div><b id="modalDisplayName">User Name</b></div>
+                    <div id="modalDisplayRole" class="muted-text">REGULAR USER</div>
+                </div>
+            </div>
+
+            <form id="profileForm" class="profile-edit-form">
+                <input type="hidden" id="userId" />
+
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" placeholder="Full Name" required />
+
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Email" required />
+
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Password" required />
+
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone" placeholder="Phone Number" required />
+
+                <label for="profileImageFile">Profile Picture</label>
+                <input type="file" id="profileImageFile" accept="image/*" />
+
+                <div class="modal-actions">
+                    <button type="submit" class="btn">Save Changes</button>
+                    <button type="button" class="secondary-btn" id="cancelEditBtn">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="siteFooter"></div>
+
+<script src="../../js/config.js"></script>
+<script src="../../js/layout.js"></script>
+<script src="../../js/profile.js"></script>
+</body>
+</html>

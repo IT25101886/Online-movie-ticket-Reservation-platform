@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/theme-plus.css" />
+</head>
+<body data-root="../..">
+<div id="siteHeader"></div>
+
+<div class="auth-page">
+    <div class="auth-card">
+        <h2>Create Account</h2>
+        <p class="subtitle">Register as a normal user</p>
+
+        <form id="registerForm">
+            <input type="text" id="fullName" placeholder="Full Name" required />
+            <input type="text" id="username" placeholder="Username" required />
+            <input type="email" id="email" placeholder="Email" required />
+            <input type="password" id="password" placeholder="Password" required />
+            <input type="text" id="phone" placeholder="Phone Number" required />
+
+            <select id="userType" required>
+                <option value="REGULAR">Regular User</option>
+                <option value="PREMIUM">Premium User</option>
+            </select>
+
+            <button type="submit">Register</button>
+        </form>
+
+        <div id="message"></div>
+    </div>
+</div>
+
+<div id="siteFooter"></div>
+
+<script src="../../js/config.js"></script>
+<script src="../../js/layout.js"></script>
+<script src="../../js/register.js"></script>
+</body>
+</html>
