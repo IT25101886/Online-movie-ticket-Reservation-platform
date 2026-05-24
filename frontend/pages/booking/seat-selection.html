@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seat Selection</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/theme-plus.css" />
+    <link rel="stylesheet" href="../../css/movie-theme.css" />
+    <link rel="stylesheet" href="../../css/booking-payment-theme.css" />
+</head>
+<body data-root="../..">
+<div id="siteHeader"></div>
+
+<div class="bp-shell">
+    <div class="bp-grid-2">
+        <div class="bp-card">
+            <h2>Step 2: Select Date, Time, and Seats</h2>
+
+            <div class="bp-form-grid">
+                <div>
+                    <label for="showDate">Show Date</label>
+                    <input type="date" id="showDate" />
+                </div>
+
+                <div>
+                    <label for="seatType">Seat Type</label>
+                    <select id="seatType">
+                        <option value="STANDARD">Standard</option>
+                        <option value="PREMIUM">Premium</option>
+                    </select>
+                </div>
+            </div>
+
+            <div style="margin-top: 16px;">
+                <label>Show Time</label>
+                <div id="showtimeRow" class="showtime-row"></div>
+            </div>
+
+            <div class="seat-section">
+                <div class="seat-legend">
+                    <span><i class="legend-dot legend-available"></i> Available</span>
+                    <span><i class="legend-dot legend-selected"></i> Selected</span>
+                    <span><i class="legend-dot legend-booked"></i> Booked</span>
+                    <span><i class="legend-dot legend-premium"></i> Premium</span>
+                </div>
+
+                <div class="screen-bar">Screen</div>
+                <div id="seatMap" class="seat-map"></div>
+            </div>
+
+            <div id="seatSelectionMessage"></div>
+        </div>
+
+        <div class="bp-card">
+            <h2>Booking Summary</h2>
+
+            <div class="bp-summary-box">
+                <div class="bp-summary-line">
+                    <span>Movie</span>
+                    <span id="summaryMovie">-</span>
+                </div>
+                <div class="bp-summary-line">
+                    <span>Date</span>
+                    <span id="summaryDate">-</span>
+                </div>
+                <div class="bp-summary-line">
+                    <span>Time</span>
+                    <span id="summaryTime">-</span>
+                </div>
+                <div class="bp-summary-line">
+                    <span>Seat Type</span>
+                    <span id="summarySeatType">-</span>
+                </div>
+                <div class="bp-summary-line">
+                    <span>Selected Seats</span>
+                    <span id="summarySeats">-</span>
+                </div>
+                <div class="bp-summary-line">
+                    <span>Seat Count</span>
+                    <span id="summarySeatCount">0</span>
+                </div>
+                <div class="bp-summary-line">
+                    <span>Total</span>
+                    <span id="summaryTotal" class="bp-total">Rs 0.00</span>
+                </div>
+            </div>
+
+            <div class="bp-action-row">
+                <button id="confirmBookingBtn" type="button">Confirm Booking</button>
+                <a class="secondary-btn" href="book-ticket.html">Back</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="siteFooter"></div>
+
+<script src="../../js/config.js"></script>
+<script src="../../js/layout.js"></script>
+<script src="../../js/seat-selection.js"></script>
+</body>
+</html>
