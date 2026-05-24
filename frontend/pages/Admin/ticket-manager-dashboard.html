@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Booking Manager Dashboard</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/theme-plus.css" />
+    <link rel="stylesheet" href="../../css/booking-payment-theme.css" />
+</head>
+<body data-root="../..">
+<div id="siteHeader"></div>
+
+<div class="app-shell">
+    <div id="siteSidebar"></div>
+
+    <main class="page-main">
+        <div class="bp-shell">
+            <div class="bp-stat-grid">
+                <div class="bp-stat-box">
+                    <div class="bp-stat-value" id="totalBookingsStat">0</div>
+                    <div class="bp-stat-label">Total Bookings</div>
+                </div>
+                <div class="bp-stat-box">
+                    <div class="bp-stat-value" id="confirmedBookingsStat">0</div>
+                    <div class="bp-stat-label">Confirmed</div>
+                </div>
+                <div class="bp-stat-box">
+                    <div class="bp-stat-value" id="pendingBookingsStat">0</div>
+                    <div class="bp-stat-label">Pending</div>
+                </div>
+                <div class="bp-stat-box">
+                    <div class="bp-stat-value" id="canceledBookingsStat">0</div>
+                    <div class="bp-stat-label">Canceled</div>
+                </div>
+            </div>
+
+            <div class="bp-card">
+                <h2>All User Bookings</h2>
+
+                <div class="bp-search-row">
+                    <input type="text" id="adminBookingSearch" placeholder="Search by booking ID, movie, or user ID" />
+                    <select id="adminBookingStatusFilter">
+                        <option value="">All Status</option>
+                        <option value="PENDING_PAYMENT">Pending Payment</option>
+                        <option value="CONFIRMED">Confirmed</option>
+                        <option value="CANCELED">Canceled</option>
+                    </select>
+                    <button id="clearAllBookingsBtn" class="danger-btn" type="button">Clear All History</button>
+                </div>
+
+                <div id="adminBookingMessage"></div>
+
+                <div class="bp-table-wrap">
+                    <table class="bp-table">
+                        <thead>
+                        <tr>
+                            <th>Booking ID</th>
+                            <th>User ID</th>
+                            <th>Movie</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Seats</th>
+                            <th>Status</th>
+                            <th>Payment</th>
+                            <th>Total</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody id="adminBookingTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<div id="siteFooter"></div>
+
+<div id="adminBookingModal" class="bp-modal hidden">
+    <div class="bp-modal-overlay" id="closeAdminBookingOverlay"></div>
+    <div class="bp-modal-content">
+        <div class="bp-modal-header">
+            <h2>Booking Details</h2>
+            <button class="bp-close-btn" id="closeAdminBookingBtn" type="button">×</button>
+        </div>
+        <div class="bp-modal-body">
+            <div id="adminBookingModalBody"></div>
+        </div>
+    </div>
+</div>
+
+<script src="../../js/config.js"></script>
+<script src="../../js/layout.js"></script>
+<script src="../../js/booking-manager.js"></script>
+</body>
+</html>
