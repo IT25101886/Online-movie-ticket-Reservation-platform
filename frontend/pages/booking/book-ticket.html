@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Ticket</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/theme-plus.css" />
+    <link rel="stylesheet" href="../../css/movie-theme.css" />
+    <link rel="stylesheet" href="../../css/booking-payment-theme.css" />
+</head>
+<body data-root="../..">
+<div id="siteHeader"></div>
+
+<div class="bp-shell">
+    <div class="bp-hero">
+        <div class="bp-hero-grid">
+            <img id="bookingMoviePoster" class="bp-poster" src="" alt="Movie Poster" />
+
+            <div>
+                <div class="bp-chip-row">
+                    <span id="bookingMovieCategory" class="bp-chip">NOW SHOWING</span>
+                    <span id="bookingMovieGenre" class="bp-chip"></span>
+                    <span id="bookingMovieLanguage" class="bp-chip"></span>
+                </div>
+
+                <div id="bookingMovieTitle" class="bp-title">Movie Title</div>
+                <p id="bookingMovieDescription" class="bp-sub">Movie description...</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="bp-card">
+        <h2>Step 1: Contact Information</h2>
+
+        <form id="bookingContactForm" class="bp-form-grid">
+            <input class="full" type="text" id="contactName" placeholder="Full Name" required />
+            <input type="email" id="contactEmail" placeholder="Email" required />
+            <input type="text" id="contactMobile" placeholder="Mobile Number" required />
+
+            <div class="full bp-action-row">
+                <button type="submit">Continue to Seat Selection</button>
+                <a class="secondary-btn" href="../movie/movie-list.html">Back to Movies</a>
+            </div>
+        </form>
+
+        <div id="bookingStartMessage"></div>
+    </div>
+</div>
+
+<div id="siteFooter"></div>
+
+<script src="../../js/config.js"></script>
+<script src="../../js/layout.js"></script>
+<script src="../../js/book-ticket.js"></script>
+</body>
+</html>
