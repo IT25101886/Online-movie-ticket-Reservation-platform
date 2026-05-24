@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Booking History</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/theme-plus.css" />
+    <link rel="stylesheet" href="../../css/booking-payment-theme.css" />
+</head>
+<body data-root="../..">
+<div id="siteHeader"></div>
+
+<div class="bp-shell">
+    <div class="bp-card">
+        <h2>My Booking History</h2>
+
+        <div class="bp-search-row">
+            <input type="text" id="bookingSearchInput" placeholder="Search by movie name or booking ID" />
+            <select id="bookingStatusFilter">
+                <option value="">All Booking Status</option>
+                <option value="PENDING_PAYMENT">Pending Payment</option>
+                <option value="CONFIRMED">Confirmed</option>
+                <option value="CANCELED">Canceled</option>
+            </select>
+        </div>
+
+        <div id="bookingHistoryMessage"></div>
+    </div>
+
+    <div id="bookingHistoryGrid" class="bp-history-grid"></div>
+</div>
+
+<!-- View Modal -->
+<div id="bookingViewModal" class="bp-modal hidden">
+    <div class="bp-modal-overlay" id="closeBookingViewOverlay"></div>
+    <div class="bp-modal-content">
+        <div class="bp-modal-header">
+            <h2>Booking Details</h2>
+            <button class="bp-close-btn" id="closeBookingViewBtn" type="button">×</button>
+        </div>
+        <div class="bp-modal-body">
+            <div id="bookingViewBody"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Modal -->
+<div id="bookingEditModal" class="bp-modal hidden">
+    <div class="bp-modal-overlay" id="closeBookingEditOverlay"></div>
+    <div class="bp-modal-content">
+        <div class="bp-modal-header">
+            <h2>Edit Booking</h2>
+            <button class="bp-close-btn" id="closeBookingEditBtn" type="button">×</button>
+        </div>
+        <div class="bp-modal-body">
+            <form id="editBookingForm" class="bp-form-grid">
+                <input type="hidden" id="editBookingId" />
+
+                <input class="full" type="text" id="editContactName" placeholder="Full Name" required />
+                <input type="email" id="editContactEmail" placeholder="Email" required />
+                <input type="text" id="editContactMobile" placeholder="Mobile Number" required />
+
+                <input type="date" id="editShowDate" required />
+                <input type="text" id="editShowTime" placeholder="Show Time (e.g. 15:00)" required />
+
+                <select id="editSeatType" required>
+                    <option value="STANDARD">Standard</option>
+                    <option value="PREMIUM">Premium</option>
+                </select>
+
+                <textarea class="full" id="editSelectedSeats" rows="4" placeholder="Enter seats like A1, A2, A3" required></textarea>
+
+                <div class="full bp-action-row">
+                    <button type="submit">Save Changes</button>
+                    <button id="cancelEditBookingBtn" class="secondary-btn" type="button">Cancel</button>
+                </div>
+            </form>
+
+            <div id="editBookingMessage"></div>
+        </div>
+    </div>
+</div>
+
+<div id="siteFooter"></div>
+
+<script src="../../js/config.js"></script>
+<script src="../../js/layout.js"></script>
+<script src="../../js/booking-history.js"></script>
+</body>
+</html>
