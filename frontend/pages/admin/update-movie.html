@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update Movie</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/theme-plus.css" />
+    <link rel="stylesheet" href="../../css/movie-theme.css" />
+</head>
+<body data-root="../..">
+<div id="siteHeader"></div>
+
+<div class="app-shell">
+    <div id="siteSidebar"></div>
+
+    <main class="page-main">
+        <div class="container">
+            <div class="management-card">
+                <h2>Update Movie</h2>
+
+                <form id="loadMovieForm">
+                    <input type="number" id="movieIdInput" placeholder="Enter Movie ID or use selected movie" />
+                    <button type="submit">Load Movie</button>
+                </form>
+
+                <form id="updateMovieForm" style="margin-top: 16px;">
+                    <input type="hidden" id="movieId" />
+                    <input type="text" id="title" placeholder="Movie Name" required />
+
+                    <select id="genre" required>
+                        <option value="">Select Genre</option>
+                        <option value="FANTASY">Fantasy</option>
+                        <option value="COMEDY">Comedy</option>
+                        <option value="ADVENTURE">Adventure</option>
+                        <option value="ANIMATION">Animation</option>
+                        <option value="ACTION">Action</option>
+                        <option value="DRAMA">Drama</option>
+                        <option value="HORROR">Horror</option>
+                    </select>
+
+                    <input type="text" id="movieType" placeholder="Movie Type" readonly />
+                    <input type="date" id="releaseDate" required />
+                    <input type="text" id="showTimes" placeholder="Show Times" required />
+                    <input type="text" id="language" placeholder="Language" required />
+                    <textarea id="description" placeholder="Movie Description" rows="5" required></textarea>
+
+                    <label for="posterImage">Replace Poster Image (Optional)</label>
+                    <input type="file" id="posterImage" accept="image/*" />
+
+                    <label for="moviePhotos">Replace Movie Screenshots (Optional)</label>
+                    <input type="file" id="moviePhotos" accept="image/*" multiple />
+
+                    <button type="submit">Update Movie</button>
+                </form>
+
+                <div id="updateMovieMessage"></div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<div id="siteFooter"></div>
+
+<script src="../../js/config.js"></script>
+<script src="../../js/layout.js"></script>
+<script src="../../js/update-movie.js"></script>
+</body>
+</html>

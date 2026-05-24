@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Movie</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/theme-plus.css" />
+    <link rel="stylesheet" href="../../css/movie-theme.css" />
+</head>
+<body data-root="../..">
+<div id="siteHeader"></div>
+
+<div class="app-shell">
+    <div id="siteSidebar"></div>
+
+    <main class="page-main">
+        <div class="container">
+            <div class="management-card">
+                <h2>Add New Movie</h2>
+
+                <form id="addMovieForm">
+                    <input type="text" id="title" placeholder="Movie Name" required />
+
+                    <select id="genre" required>
+                        <option value="">Select Genre</option>
+                        <option value="FANTASY">Fantasy</option>
+                        <option value="COMEDY">Comedy</option>
+                        <option value="ADVENTURE">Adventure</option>
+                        <option value="ANIMATION">Animation</option>
+                        <option value="ACTION">Action</option>
+                        <option value="DRAMA">Drama</option>
+                        <option value="HORROR">Horror</option>
+                    </select>
+
+                    <select id="movieType" required>
+                        <option value="NOW_SHOWING">Now Showing</option>
+                        <option value="UPCOMING">Upcoming</option>
+                    </select>
+
+                    <input type="date" id="releaseDate" required />
+                    <input type="text" id="showTimes" placeholder="Show Times (e.g. 15:00,17:00,19:00,21:00)" required />
+                    <input type="text" id="language" placeholder="Language (e.g. EN, Sinhala, Tamil)" required />
+                    <textarea id="description" placeholder="Movie Description" rows="5" required></textarea>
+
+                    <label for="posterImage">Movie Poster Image</label>
+                    <input type="file" id="posterImage" accept="image/*" required />
+
+                    <label for="moviePhotos">Movie Photos / Screenshots</label>
+                    <input type="file" id="moviePhotos" accept="image/*" multiple />
+
+                    <button type="submit">Save Movie</button>
+                </form>
+
+                <div id="addMovieMessage"></div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<div id="siteFooter"></div>
+
+<script src="../../js/config.js"></script>
+<script src="../../js/layout.js"></script>
+<script src="../../js/add-movie.js"></script>
+</body>
+</html>

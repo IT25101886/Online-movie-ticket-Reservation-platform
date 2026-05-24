@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Review Manager Dashboard</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/theme-plus.css" />
+    <link rel="stylesheet" href="../../css/review-theme.css" />
+</head>
+<body data-root="../..">
+<div id="siteHeader"></div>
+
+<div class="app-shell">
+    <div id="siteSidebar"></div>
+
+    <main class="page-main">
+        <div class="container">
+            <div class="summary-card">
+                <div class="summary-left">
+                    <div class="summary-icon">⭐</div>
+                    <div>
+                        <div class="summary-title">Total Reviews</div>
+                        <div class="summary-number" id="totalReviewsCount">0</div>
+                    </div>
+                </div>
+
+                <div class="summary-actions">
+                    <button type="button" class="secondary-btn" id="refreshReviewsBtn">Refresh</button>
+                </div>
+            </div>
+
+            <div class="management-card review-admin-card">
+                <div class="management-header">
+                    <h2>All Reviews</h2>
+                </div>
+
+                <div class="review-search-row">
+                    <input type="text" id="reviewSearchInput" placeholder="Search by movie, user, or comment" />
+
+                    <select id="reviewTypeFilter">
+                        <option value="">All Types</option>
+                        <option value="VERIFIED">Verified</option>
+                        <option value="PUBLIC">Public</option>
+                    </select>
+                </div>
+
+                <div id="adminReviewMessage"></div>
+
+                <div class="review-admin-table-wrap">
+                    <table class="review-admin-table">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Movie</th>
+                            <th>User</th>
+                            <th>Rating</th>
+                            <th>Type</th>
+                            <th>Comment</th>
+                            <th>Date</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody id="adminReviewTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<div id="siteFooter"></div>
+
+<script src="../../js/config.js"></script>
+<script src="../../js/layout.js"></script>
+<script src="../../js/review-manager.js"></script>
+</body>
+</html>
