@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Manager Dashboard</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/theme-plus.css" />
+    <link rel="stylesheet" href="../../css/movie-theme.css" />
+</head>
+<body data-root="../..">
+<div id="siteHeader"></div>
+
+<div class="app-shell">
+    <div id="siteSidebar"></div>
+
+    <main class="page-main">
+        <div class="container movie-manager-panel">
+            <div class="summary-card">
+                <div class="summary-left">
+                    <div class="summary-icon">🎬</div>
+                    <div>
+                        <div class="summary-title">Total Movies</div>
+                        <div class="summary-number" id="totalMoviesCount">0</div>
+                    </div>
+                </div>
+
+                <div class="summary-actions">
+                    <a class="btn" href="add-movie.html">Add Movie</a>
+                    <a class="secondary-btn" href="../movie/movie-list.html">Public Movie List</a>
+                </div>
+            </div>
+
+            <div class="management-card">
+                <div class="management-header">
+                    <h2>All Added Movies</h2>
+                </div>
+
+                <div id="movieDashboardMessage"></div>
+
+                <div class="table-wrapper movie-manager-table">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Poster</th>
+                            <th>Movie Name</th>
+                            <th>Genre</th>
+                            <th>Category</th>
+                            <th>Release Date</th>
+                            <th>Show Times</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody id="movieDashboardTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<div id="siteFooter"></div>
+
+<script src="../../js/config.js"></script>
+<script src="../../js/layout.js"></script>
+<script src="../../js/movie-dashboard.js"></script>
+</body>
+</html>

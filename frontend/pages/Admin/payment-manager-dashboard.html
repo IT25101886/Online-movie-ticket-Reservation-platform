@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Manager Dashboard</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/theme-plus.css" />
+    <link rel="stylesheet" href="../../css/booking-payment-theme.css" />
+</head>
+<body data-root="../..">
+<div id="siteHeader"></div>
+
+<div class="app-shell">
+    <div id="siteSidebar"></div>
+
+    <main class="page-main">
+        <div class="bp-shell">
+            <div class="bp-stat-grid">
+                <div class="bp-stat-box">
+                    <div class="bp-stat-value" id="totalRevenueStat">Rs 0.00</div>
+                    <div class="bp-stat-label">Total Revenue</div>
+                </div>
+                <div class="bp-stat-box">
+                    <div class="bp-stat-value" id="totalPaymentsStat">0</div>
+                    <div class="bp-stat-label">Total Payments</div>
+                </div>
+                <div class="bp-stat-box">
+                    <div class="bp-stat-value" id="refundPendingStat">0</div>
+                    <div class="bp-stat-label">Refund Pending</div>
+                </div>
+                <div class="bp-stat-box">
+                    <div class="bp-stat-value" id="refundedStat">0</div>
+                    <div class="bp-stat-label">Refunded</div>
+                </div>
+            </div>
+
+            <div class="bp-card">
+                <h2>All User Payments</h2>
+
+                <div class="bp-search-row">
+                    <input type="text" id="adminPaymentSearch" placeholder="Search by payment ID, booking ID, user ID, or movie" />
+                    <select id="adminPaymentStatusFilter">
+                        <option value="">All Status</option>
+                        <option value="PENDING">Pending</option>
+                        <option value="COMPLETED">Completed</option>
+                        <option value="REFUND_PENDING">Refund Pending</option>
+                        <option value="REFUNDED">Refunded</option>
+                    </select>
+                    <button id="clearAllPaymentsBtn" class="danger-btn" type="button">Clear All History</button>
+                </div>
+
+                <div id="adminPaymentMessage"></div>
+
+                <div class="bp-table-wrap">
+                    <table class="bp-table">
+                        <thead>
+                        <tr>
+                            <th>Payment ID</th>
+                            <th>Booking ID</th>
+                            <th>User ID</th>
+                            <th>Movie</th>
+                            <th>Amount</th>
+                            <th>Method</th>
+                            <th>Status</th>
+                            <th>Booking Status</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody id="adminPaymentTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<div id="siteFooter"></div>
+
+<div id="adminPaymentModal" class="bp-modal hidden">
+    <div class="bp-modal-overlay" id="closeAdminPaymentOverlay"></div>
+    <div class="bp-modal-content">
+        <div class="bp-modal-header">
+            <h2>Payment Details</h2>
+            <button class="bp-close-btn" id="closeAdminPaymentBtn" type="button">×</button>
+        </div>
+        <div class="bp-modal-body">
+            <div id="adminPaymentModalBody"></div>
+        </div>
+    </div>
+</div>
+
+<script src="../../js/config.js"></script>
+<script src="../../js/layout.js"></script>
+<script src="../../js/payment-manager.js"></script>
+</body>
+</html>
